@@ -1,22 +1,32 @@
-var s2c;
-try { s2c = require('../'); } catch(e) { s2c = require('sheet2calc'); }
-var fs = require('fs'), program = require('commander');
+var S2C;
+try {
+    S2C = require('../');
+} catch (e) {
+    S2C = require('sheet2calc');
+}
+var program = require('commander');
 program
-	.version(s2c.version)
-	.usage('[options] <file> [sheetname]')
-	.option('-f, --file <file>', 'use specified file (- for stdin)')
-	.option('-i, --input <input>', 'a set of cells and its values')
-	.option('-o, --output <output>', 'a set of cells to calculate')
-	.option('-s, --sheet <sheet>', 'print specified sheet (default first sheet)')
-	.option('-N, --sheet-index <idx>', 'use specified sheet index (0-based)')
-	.option('-l, --list-sheets', 'list sheet names and exit');
+    .version(S2C.version)
+    .usage('[options] <file> <sheet> <cell>')
+    .option('-i, --input <input>', 'a set of cells and its values');
 
-program.on('--help', function() {
-	console.log('  Takes a set of cells as input and calculates the values of an other set of cells.');
-	console.log('  Output format is JSON.');
-	console.log('  Support email: tino.truppel@gmail.com');
+program.on('--help', function () {
+    console.log('  Takes a set of cells as input and calculates the value of an other cells.');
 });
 
 program.parse(process.argv);
 
-// TODO
+var filename, sheet, cell = '', input = {};
+if (program.args[0]) filename = program.args[0];
+if (program.args[1]) sheet = program.args[1];
+if (program.args[2]) cell = program.args[2];
+if (program.input) input = JSON.parse(program.input);
+
+if (!filename || !sheet || !cell) {
+    console.error("s2c: must specify a filename, sheet and a cell");
+    process.exit(1);
+}
+
+S2C.loadSheet(filename);
+S2C.setValues(input);
+console.log(S2C.getValue(sheet, cell));

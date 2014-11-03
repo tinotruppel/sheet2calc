@@ -17,7 +17,8 @@
   "dependencies": {
     "j": "~0.4.3",
     "formulajs": "~1.0.4",
-    "excelFormulaUtilitiesJS": "josh3ennett/excelFormulaUtilitiesJS"
+    "excelFormulaUtilitiesJS": "josh3ennett/excelFormulaUtilitiesJS",
+    "commander": ""
   },
   "devDependencies": {
     "mocha":""
