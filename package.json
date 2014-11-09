@@ -3,7 +3,16 @@
   "version": "0.0.1",
   "author": "Tino Truppel",
   "description": "Tool for using spreadsheet files as calculator",
-  "keywords": [ "excel", "xls", "xlsx", "xlsm", "xlsb", "office", "spreadsheet", "calculator" ],
+  "keywords": [
+    "excel",
+    "xls",
+    "xlsx",
+    "xlsm",
+    "xlsb",
+    "office",
+    "spreadsheet",
+    "calculator"
+  ],
   "bin": {
     "s2j": "./bin/s2j.js"
   },
@@ -18,13 +27,17 @@
     "j": "~0.4.3",
     "formulajs": "~1.0.4",
     "excelFormulaUtilitiesJS": "josh3ennett/excelFormulaUtilitiesJS",
+    "underscore": "~1.7.0",
     "commander": ""
   },
   "devDependencies": {
-    "mocha":""
+    "mocha": ""
   },
-  "repository": { "type":"git", "url":"https://github.com/tinotruppel/sheet2calc.git" },
-  "bugs": { "url": "https://github.com/tinotruppel/sheet2calc/issues" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tinotruppel/sheet2calc.git"
+  },
+  "bugs": {"url": "https://github.com/tinotruppel/sheet2calc/issues"},
   "license": "Apache-2.0",
-  "engines": { "node": ">=0.8" }
+  "engines": {"node": ">=0.8"}
 }
